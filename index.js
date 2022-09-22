@@ -19,7 +19,6 @@ app.use(cors())
 app.use("/user", userController)
 app.use(authentication)
 app.use("/notes", notesController)
-
 app.listen(PORT, async () => {
     try{
         await connection;
