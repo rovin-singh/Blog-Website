@@ -31,13 +31,13 @@ userController.post("/login", async (req, res) => {
 	const hash = user.password;
 	bcrypt.compare(password, hash, function (err, result) {
 		if (err) {
-			res.send("Something went wrong, plz try again later");
+			res.json("Something went wrong, plz try again later");
 		}
 		if (result) {
 			const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 			res.json({ message: "Login successfull", token });
 		} else {
-			res.send("Invalid credentials, plz signup if you haven't");
+			res.json("Invalid credentials, plz signup if you haven't");
 		}
 	});
 });
