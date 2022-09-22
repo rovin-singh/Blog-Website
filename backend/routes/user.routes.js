@@ -8,7 +8,7 @@ userController.post("/signup", (req, res) => {
 	const { email, password, age } = req.body;
 	bcrypt.hash(password, 5, async function (err, hash) {
 		if (err) {
-			res.send("Something went wrong, plz try again later");
+			res.json("Something went wrong, plz try again later");
 		}
 		const user = new UserModel({
 			email,
@@ -20,7 +20,7 @@ userController.post("/signup", (req, res) => {
 			res.json({ msg: "Signup successfull" });
 		} catch (err) {
 			console.log(err);
-			res.send("Something went wrong, plz try again");
+			res.json("Something went wrong, plz try again");
 		}
 	});
 });
