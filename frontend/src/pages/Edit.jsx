@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { updateNote } from "../API/notes";
 
 const Edit = () => {
-    const param = useParams();
-    console.log(param)
+	const param = useParams();
+	const naviagte = useNavigate();
 	const [updateData, setUpdate] = useState({});
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
@@ -14,8 +14,9 @@ const Edit = () => {
 		e.preventDefault();
 		console.log(updateData);
 		updateNote(param.noteId, updateData);
-    };
-    console.log(updateData)
+		naviagte("/notes");
+	};
+	console.log(updateData);
 	return (
 		<div>
 			<h2>Edit Here</h2>

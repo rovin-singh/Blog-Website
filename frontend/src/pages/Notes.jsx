@@ -13,7 +13,7 @@ const Notes = () => {
 	};
 	useEffect(() => {
 		getNotesData();
-	}, []);
+	}, [data]);
 	// console.log(data);
 
 	return (

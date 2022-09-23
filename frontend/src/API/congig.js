@@ -1,1 +1,1 @@
-export const URL="http://localhost:8080" 
+export const URL="https://quiet-sierra-07297.herokuapp.com" 

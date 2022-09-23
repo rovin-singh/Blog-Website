@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { getToken } from "../utills/Config";
 const Authentication = ({ children }) => {
-    const  token  = getToken();
-    if (!token) {
-        return navigator("/login")
-    }
+	const token = getToken();
+
+	if (!token) {
+		return <Navigate to='/login' />;
+	}
 	// const navigate = useNavigate();
 	// useEffect(() => {
 	// 	if (!getToken()) {
