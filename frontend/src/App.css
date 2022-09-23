@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.grid{
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: auto;
+  gap:20px
+}
+.grid>div{
+  border: 1px solid red;
+  padding: 20px;
+}
+.grid .flex{
+  display: flex;
+  justify-content: space-evenly;
+}

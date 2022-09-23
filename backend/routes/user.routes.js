@@ -8,7 +8,7 @@ userController.post("/signup", (req, res) => {
 	const { email, password, age } = req.body;
 	bcrypt.hash(password, 5, async function (err, hash) {
 		if (err) {
-			res.json("Something went wrong, plz try again later");
+			res.send("Something went wrong, plz try again later");
 		}
 		const user = new UserModel({
 			email,
@@ -17,10 +17,10 @@ userController.post("/signup", (req, res) => {
 		});
 		try {
 			await user.save();
-			res.json({ msg: "Signup successfull" });
+			res.send({ msg: "Signup successfull" });
 		} catch (err) {
 			console.log(err);
-			res.json("Something went wrong, plz try again");
+			res.send("Something went wrong, plz try again");
 		}
 	});
 });
@@ -29,18 +29,18 @@ userController.post("/login", async (req, res) => {
 	const { email, password } = req.body;
 	const user = await UserModel.findOne({ email });
 	if (!user) {
-		res.json("First Signup")
+	  return res.send("First Signup")
 	}
 	const hash = user.password;
 	bcrypt.compare(password, hash, function (err, result) {
 		if (err) {
-			res.json("Something went wrong, plz try again later");
+			res.send("Something went wrong, plz try again later");
 		}
 		if (result) {
 			const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
-			res.json({ message: "Login successfull", token });
+			res.send({ message: "Login successfull", token });
 		} else {
-			res.json("Invalid credentials, plz signup if you haven't");
+			res.send("Invalid credentials, plz signup if you haven't");
 		}
 	});
 });
